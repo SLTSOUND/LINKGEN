@@ -413,8 +413,9 @@ function printSteps(steps) {
                             break;
                         case "&pw":
                             el.setAttribute("onchange", function updatePassword(){
-				var ele = this.cloneNode(true);
-                                ele.value = encodeURIComponent(el.value);
+				var ele = el.cloneNode(true);
+                                ele.value = encodeURIComponent(ele.value);
+console.log(ele);
 				updateLink(ele);
 			    })
 		            exampleElement.innerText = answer.label;
