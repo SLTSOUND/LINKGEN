@@ -411,9 +411,18 @@ function printSteps(steps) {
                             
                             exampleElement.innerText = answer.label;
                             break;
+                        case "&pw":
+		            exampleElement.innerText = answer.label;
+                            exampleElement.addEventListener("click", function () {
+                                el.oldValue =  el.value;
+                                el.value = encodeURIComponent(el.value);
+                                el.onchange();
+                            });
+                            break;
                         case "&b64css":
+                            exampleElement.innerText = answer.label;
                             exampleElement.className = "click";
-                            exampleElement.innerText = "Base64-encoded CSS (click here to encode)";
+                            exampleElement.innerText = "URL-encod CSS (click here to encode)";
                             exampleElement.addEventListener("click", function () {
                                 el.oldValue =  el.value;
                                 el.value = base64EncodeUrl(el.value);
