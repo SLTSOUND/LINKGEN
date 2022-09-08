@@ -412,13 +412,12 @@ function printSteps(steps) {
                             exampleElement.innerText = answer.label;
                             break;
                         case "&pw":
+                            el.setAttribute("onchange", function(){
+				var ele = ele.cloneNode(true);
+                                ele.value = encodeURIComponent(el.value);
+				updateLink(ele);
+			    })
 		            exampleElement.innerText = answer.label;
-                            exampleElement.addEventListener("click", function () {
-                                el.oldValue =  el.value;
-                                el.value = encodeURIComponent(el.value);
-                                el.onchange();
-				el.value = el.oldValue;
-                            });
                             break;
                         case "&b64css":
                             exampleElement.innerText = answer.label;
