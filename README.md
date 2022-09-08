@@ -1,4 +1,4 @@
-# obsninja-invite
+# vdon-invite
 
 Invite link generator for the [vdo.ninja](https://vdo.ninja) website.
 Add panels or change the order by tweaking `data.json`.
