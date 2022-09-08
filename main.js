@@ -411,15 +411,6 @@ function printSteps(steps) {
                             
                             exampleElement.innerText = answer.label;
                             break;
-                        case "&pw":
-                            el.setAttribute("onchange", function updatePassword(){
-				var ele = el.cloneNode(true);
-                                ele.value = encodeURIComponent(ele.value);
-console.log(ele);
-				updateLink(ele);
-			    })
-		            exampleElement.innerText = answer.label;
-                            break;
                         case "&b64css":
                             exampleElement.innerText = answer.label;
                             exampleElement.className = "click";
@@ -543,6 +534,10 @@ function setStringParam(url, target, param, input, type){
 
         if (input.value != ""){
             // There's a new value
+		
+		//  ele.value = encodeURIComponent(ele.value);
+		
+		
             if (input.oldValue != "") {
                 console.log("There was an old value so we're changing that");
                 if (param == '&room' && target == 'directorUrl'){ 
@@ -554,13 +549,18 @@ function setStringParam(url, target, param, input, type){
                     getById(target).dataset.raw = getById(target).dataset.raw.replace(`${param}=${input.oldValue}`, `${param}=${input.value}`);
                 }
             } else {
+                var inp = input.value;
+		if (param == "&pw"){
+                    inp = encodeURIComponent(inp);
+		}
+
                 if (param == '&room' && target == 'directorUrl'){
                     console.log("changing room on directorUrl")
-                    getById(target).dataset.raw += `?dir=${input.value}`;
+                    getById(target).dataset.raw += `?dir=${inp}`;
                 } else {
                     if (param == '&push'){param = '?push'}
                     if (param == '&view'){param = '?view'}
-                    getById(target).dataset.raw += `${param}=${input.value}`;
+                    getById(target).dataset.raw += `${param}=${inp}`;
                 }
             }
         } else {
