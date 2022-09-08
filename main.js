@@ -417,6 +417,7 @@ function printSteps(steps) {
                                 el.oldValue =  el.value;
                                 el.value = encodeURIComponent(el.value);
                                 el.onchange();
+				el.value = el.oldValue;
                             });
                             break;
                         case "&b64css":
